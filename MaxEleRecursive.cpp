@@ -70,11 +70,63 @@ int countRecursive(struct Node *p){
         return 1 + countRecursive(p->next) ;
     }
 }
+
+int sum(struct Node *p){
+
+    int sum =0;
+    while(p!=0){
+        sum += p->data;
+        p = p->next;
+    }
+    return sum;
+}
+
+int sumRecurrsive(struct Node *p){
+    if(p ==0){
+        return 0;
+
+    }
+
+    else{
+        return sumRecurrsive(p->next) + p->data;
+    }
+}
+
+int MaximumElement(struct Node *p){
+    int CurrMax = -32768;
+    while(p!=0){
+        if(p->data > CurrMax){
+            CurrMax = p->data;
+            p = p->next;
+        }
+    }
+
+    return CurrMax;
+}
+
+int MaxEleRecursive(struct Node* p){
+    int x =0;
+    if(p ==0){
+        return -32768;
+    }
+
+    else{
+        x = MaxEleRecursive(p->next);
+
+        if(x > p->data){
+            return x;
+        }
+
+        else{
+            return p->data;
+        }
+    }
+}
 int main(){
-    int A[] ={1,2,3,4,5};
-    create(A,5);
+    int A[] ={1,2,3,4,5,6};
+    create(A,6);
     // ReverseRecursiveDisplay(first);
-    cout<<countRecursive(first)<<endl;;
+    cout<<MaxEleRecursive(first)<<endl;;
     return 0;
 }
 
