@@ -1,0 +1,90 @@
+Problem With array:
+
+Fixed Size 
+e.g. int A[10];
+if more than 10 elements then create issue;
+
+int A[100];
+if only 10 element used 90 element size waste;
+
+
+Linked List:
+
+let the user do itby his choice;
+add and remove any number of elements;
+
+|element|pointerTONextElement|
+
+More flexible than Arrays 
+
+LL is always created in Heap not Stack
+
+What is LL:
+LL is a collection of nodes where each node contains 2 fields 1st one is of data and 2nd of pointer to next node
+
+|200| -> |8|210| -> |21|250| -> |12|Null|
+
+Arrays are non contigous
+
+Node|- 
+      data
+      PointerToNextNode
+
+struct Node{
+    int data;
+    struct Node *Next; // Self Referential structure
+}
+
+Class              |   Structure
+Everything by      |   Everything by Default 
+default is Private |   is Public
+
+In any compiler if integer is taking 2 bytes pointers also takes 2 bytes
+
+Node size = 2*size of pointer
+
+How a Node is created:
+
+Struct Node *P;
+P = new Node;
+
+How to access Member of the node
+
+P->data = 10;
+P->next =0;
+
+Synatx:
+
+q=p;
+p points on the same node that q pointed on;
+
+q = p->next;
+q will be getting the value p's next(i.e 2nd field in p)
+
+p= p->next;
+
+if next value is 210;
+then p now points on 210 and not on 200;
+
+Condition is pointer P is pointing on some node or Not:
+NULL:
+if(P == NULL)
+if(P==0)
+if(!P)
+
+NotNull:
+if(P!= NULL)
+if(P!=0)
+if(P)
+
+How to know if P is Last Node:
+if(P->Next == NULL)
+
+How to display a linked List:
+Traversing in LL:
+
+while(P != 0){
+    cout<<p->data;
+    p = p->next;
+}
+
