@@ -168,20 +168,91 @@ struct Node* searchfast(struct Node *p, int key){
     }
     return 0;
 }
+
+/*
+    To Insert before first Node:
+
+    1) Take a new Node t
+    2) Initialize with data to store
+    3) Make it point on first
+    4) Move first to new Node
+
+    Node *t = new Node;
+    t->data = 10
+    t->next->first;
+    first=t;
+
+    How to insert after given position:
+
+    1) Take a new Node t
+    2) t points on position +1th Index;
+    3) Node pos should point on t;
+
+    \/ - Works perfectly for 1st and last nodes as well:
+
+    Node *t =new Node;
+    t->data = 10;
+    p=first;
+
+    for(int i=0; i <p-1;i++){
+     p = p->next;
+    }
+
+    t->next = p->next;
+    p->next =t;
+
+   Time for Insertion
+   Min-> O(1);
+   Max O(n);
+
+
+
+
+
+
+
+*/
+void Insertion(struct Node *p,int index,int val){
+    int i;
+    if(index < 0 || index > countNode(p)){
+        return;
+    }
+
+    struct Node *t = new Node;
+   
+
+    t->data = val;
+
+    if(index == 0){
+        t->next=first;
+        first=t;
+    }
+
+    else{
+        for(i=0;i<index-1;i++){
+            p=p->next;
+
+        }
+
+        t->next=p->next;
+        p->next=t;
+
+    }
+
+}
+
+
 int main(){
 
     struct Node *temp;
     int A[] ={1,2,3,4,5,6};
     create(A,6);
-    // ReverseRecursiveDisplay(first);
-    temp = searchfast(first ,2);
-   if(temp!=NULL){
-    cout<<"Element is found"<<endl;
-   }
-   else{
-    cout<<"Element is not found"<<endl;
+    display(first);
+    cout<<endl;
 
-   } 
+    Insertion(first,8,234);
+
+
 
    
     display(first);
