@@ -297,24 +297,50 @@ void InsertInsortedLL(struct Node *p, int val){
 }
 
 
-void Deletion(struct Node *p, int pos){
-    if(pos < 0 || pos > countNode(p)){
-        return;
+int Deletion(struct Node *p, int pos){
+
+    struct Node *q = NULL;
+    int i,x =-1;
+
+    if(pos < 1 || pos > countNode(p)){
+        return -1;
     }
-    for(int i =0; i < pos;i++){
-    if(pos ==0){
-        p->next = p->next->next;
-        p->data = p->next->data;
+
+    if(pos==1){
+        q =first;
+        x=first->data;
+        first=first->next;
+        free(q);
+        return x;
+
     }
 
     else{
-        p->next = p->next->next;
-        p->data = p->next->data;
+        for(i =0; i <pos-1;i++){
+            q=p;
+            p=p->next;
+        }
+
+        q->next = p->next;
+        x = p->data;
+        free(q);
+        return x;
+    }
+
+    // for(int i =0; i < pos;i++){
+    // if(pos ==0){
+    //     p->next = p->next->next;
+    //     p->data = p->next->data;
+    // }
+
+    // else{
+    //     p->next = p->next->next;
+    //     p->data = p->next->data;
 
 
-    }
-    p=p->next;
-    }
+    // }
+    // p=p->next;
+    // }
 }
 
 int main(){
@@ -324,7 +350,7 @@ int main(){
     Insertion(first,3,4);
     Insertion(first,4,5);
     InsertionAtLast(first,7);
-    Deletion(first,2);
+    Deletion(first,8);
 
    
     display(first);
