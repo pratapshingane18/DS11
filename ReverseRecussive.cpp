@@ -436,6 +436,17 @@ void ReverseUsingNode(struct Node *p){
 }
 
 
+void ReverseRecurssive(struct Node *q, struct Node *p){
+    if(p){
+        ReverseRecurssive(p,p->next);
+        p->next =q;
+    }
+    else{
+        first =q;
+    }
+}
+
+
 
 int main(){
     Insertion(first,0,1);
@@ -444,15 +455,10 @@ int main(){
     Insertion(first,2,3);
     Insertion(first,3,4);
     Insertion(first,4,5);
-    
-
-    
-    
-    
-
    
-    ReverseUsingNode(first);
+    ReverseRecurssive(NULL,first);
     display(first);
+
     return 0;
 }
 
