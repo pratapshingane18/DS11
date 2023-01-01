@@ -374,7 +374,41 @@ void RemoveDuplicates(struct Node *p){
 
 }
 
+/*Reversing a Linked List
+    |- Reversing an Element
+    |- Reversing a Node
 
+    
+
+*/
+
+void Reverse(struct Node *p){
+  /*  Reversing an Element:
+    * Take an Array
+    * Copy all elements of LL to that Array
+    * Again Reverse copy all element from an array to LL
+  */
+
+    int arr[countNode(p)];
+    p = first;
+    int i=0;
+    while(p){
+        arr[i] = p->data;
+        p= p->next;
+        i++;
+    }
+
+    p = first;
+    i--;
+
+    while(p){
+        p->data = arr[i];
+        p=p->next;
+        i--;
+    }
+
+
+}
 
 
 
@@ -382,18 +416,18 @@ int main(){
     Insertion(first,0,1);
     
     Insertion(first,1,2);
-    Insertion(first,2,2);
-    Insertion(first,3,2);
+    Insertion(first,2,3);
+    Insertion(first,3,4);
     Insertion(first,4,5);
-    RemoveDuplicates(first);
+    
 
     
     
     
 
    
+    Reverse(first);
     display(first);
-    cout<<endl<<IsLLSorted(first)<<endl;;
     return 0;
 }
 
