@@ -327,33 +327,46 @@ int Deletion(struct Node *p, int pos){
         return x;
     }
 
-    // for(int i =0; i < pos;i++){
-    // if(pos ==0){
-    //     p->next = p->next->next;
-    //     p->data = p->next->data;
-    // }
+}
+/* Time 
 
-    // else{
-    //     p->next = p->next->next;
-    //     p->data = p->next->data;
+Min- O(1) - when list is Unsorted
+Max- o(n) - when list is sorted
 
+*/
+int IsLLSorted(struct Node *p){
 
-    // }
-    // p=p->next;
-    // }
+    int val = -32768;
+   
+        while(p){
+
+            
+            if(p->data < val){
+                return false;
+            }
+            val = p->data;
+            p = p->next;
+            
+        }
+    
+
+    return true;
 }
 
 int main(){
     Insertion(first,0,1);
-    Insertion(first,1,2);
+    
+    Insertion(first,1,5);
     Insertion(first,2,3);
     Insertion(first,3,4);
-    Insertion(first,4,5);
-    InsertionAtLast(first,7);
-    Deletion(first,4);
+    Insertion(first,4,2);
+    
+    
+    
 
    
     display(first);
+    cout<<endl<<IsLLSorted(first)<<endl;;
     return 0;
 }
 

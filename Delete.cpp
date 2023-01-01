@@ -327,20 +327,7 @@ int Deletion(struct Node *p, int pos){
         return x;
     }
 
-    // for(int i =0; i < pos;i++){
-    // if(pos ==0){
-    //     p->next = p->next->next;
-    //     p->data = p->next->data;
-    // }
-
-    // else{
-    //     p->next = p->next->next;
-    //     p->data = p->next->data;
-
-
-    // }
-    // p=p->next;
-    // }
+   
 }
 
 int main(){
