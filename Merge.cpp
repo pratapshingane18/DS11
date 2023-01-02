@@ -467,6 +467,15 @@ void ReverseRecurssive(struct Node *q, struct Node *p){
     }
 }
 
+void concatenate(struct Node *p, struct Node *q){
+    third = p;
+    while(p->next){
+        p = p->next;
+    }
+
+    p->next = q;
+}
+
 /* Merge LL
 
 Take 2 Integer pointers
@@ -492,6 +501,51 @@ Take 2 Integer pointers
 
 */
 
+void Merge(struct Node *p, struct Node *q){
+    struct Node *last;
+    if(p->data < q->data){
+        
+        last = third = p;
+        p= p->next;
+        third->next = NULL;
+
+    }
+
+    else{
+        last = third = q;
+        q = q->next;
+        third->next = NULL;
+    }
+
+    while(p && q){
+        if(p->data < q->data){
+            last->next = p;
+            last = p;
+            p = p->next;
+            last->next = NULL;
+           
+
+        }
+
+        else{
+            last->next = q;
+            last = q;
+            q=q->next;
+            last->next = NULL;
+        }
+    }
+
+    if(p!=NULL){
+        last->next = p;
+
+    }
+   if(q!= NULL){
+    last->next = q;
+   }
+
+}
+
+
 
 
 int main(){
@@ -500,10 +554,18 @@ int main(){
 
    create(A,5);
    create2(B,4);
+   cout<<"first Linked List"<<endl;
 
    display(first);
-   cout<<endl;
+    cout<<endl;
+   cout<<"Second Linked List"<<endl;
+  
    display(second);
+    cout<<endl;
+   
+   cout<<"Merged Linked List"<<endl;
+   Merge(first,second);
+   display(third);
 
     return 0;
 }
