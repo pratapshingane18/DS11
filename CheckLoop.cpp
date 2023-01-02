@@ -599,9 +599,9 @@ int main(){
    int A[] = { 10,30,50,70,90};
    create(A,5);
    
-//    t1 = first->next->next;
-//    t2 = first->next->next->next->next;
-//    t2->next = t1;
+   t1 = first->next->next;
+   t2 = first->next->next->next->next;
+   t2->next = t1;
 
    cout<<CheckLoop(first)<<endl;
     return 0;
