@@ -64,6 +64,5 @@ void LinkedList::Display(){
 int main(){
     int A[]={1,2,4,5};
     LinkedList l(A,4);
-    cout<<l.Delete(2);
     l.Display();
 }
