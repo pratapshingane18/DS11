@@ -1,18 +1,8 @@
 /*
-Insertion Before Head
-Insertion at any position
+Two Types:
+- Delete AT Head;
+- Delete at certain position
 
-Insertion at any position
-- new Node t;
--t points to next of node you want to insert after
-- the node you want to insert after points to t
-
-Insertion Before Head:
-- Make new Node t;
-- t points to Head;
-- The last node of the LL points to t
-
-Logically No need to Move Head
 
 
 
@@ -38,6 +28,7 @@ public:
     ~CircularLinkedList();
     void Insert(Node *p, int index, int x);
     int Length(Node *p);
+    int Delete(Node *p, int pos);
 
    
 };
@@ -152,13 +143,53 @@ CircularLinkedList::~CircularLinkedList() {
     }
 
  }
+
+ int CircularLinkedList:: Delete(Node *p, int pos){
+    Node *q;
+    int i;
+
+    if(pos < 0 || pos > Length(p)){
+        return -1;
+    }
+
+    if(pos == 1){
+        while(p->next !=head){
+            p = p->next;
+        }
+        int x = head->data;
+        if(head == p){
+            delete head;
+            head = NULL;
+        }
+
+        else{
+            p->next = head->next;
+            delete head;
+            head = p->next;
+        }
+
+
+    }
+
+    else{
+        for(int i=0; i < pos -2; i++){
+            p = p->next;
+        }
+    }
+     q = p->next;
+     p->next = q->next;
+     int x = q->data;
+     delete q;
+
+    return 0;
+ }
 int main() {
  
     int A[] = {1, 3, 5, 7, 9};
     
     CircularLinkedList cl(A, sizeof(A)/sizeof(A[0]));
     Node* h = cl.getHead();
-    cl.Insert(h,5,100);
+    cl.Delete(h,1);
     cl.Display();
  
     
@@ -166,3 +197,4 @@ int main() {
  
     return 0;
 }
+
