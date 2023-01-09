@@ -306,7 +306,8 @@ void InsertInsortedLL(struct Node *p, int val){
 
         if(p==first){
             t->next =first;
-            first-t;
+            first-
+            t;
         }
 
         else{
