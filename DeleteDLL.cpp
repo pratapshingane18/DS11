@@ -90,33 +90,45 @@ void insert(struct Node *p, int index, int x){
 
 }
 
-void Delete(struct Node *p, int index){
-    int x;
+int Delete(struct Node *p, int index){
+    int i,x=-1;
+
+    struct Node *q;
     if(index < 0 || index > length(p)){
-        return;
+        return -1;
     }
-    if(index == 0){
+    if(index == 1){
         first = first->next;
-        free(first);
+        if(first){
+            first->prev =NULL;
+        }
+        x = p->data;
+        free(p);
         
     }
 
     else{
-        for(int i =0; i < index; i++){
+        for(int i =0; i < index-1; i++){
             p = p->next;
         }
 
-        x = p->data;
-        p->next->prev = p->prev;
+        
+       
         p->prev->next = p->next;
+        if(p->next){
+             p->next->prev = p->prev;
+        }
+        x = p->data;
         free(p);
     }
+
+    return x; 
 }
 
 int main(){
     int A[] = {10,2,5,7,1};
     create(A,5);
-    Delete(first,0);
+    Delete(first,2);
 
     display(first);
     return 0;
