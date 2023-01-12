@@ -93,7 +93,7 @@ void insert(struct Node *p, int index, int x){
 int Delete(struct Node *p, int index){
     int i,x=-1;
 
-    struct Node *q;
+    
     if(index < 0 || index > length(p)){
         return -1;
     }

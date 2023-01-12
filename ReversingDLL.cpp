@@ -148,7 +148,7 @@ int main(){
 
     display(first);
     Reverse(first);
-    cout<<"After Reversing"<<endl;
+    cout<<"After Reversing::"<<endl;
     display(first);
     return 0;
 }
