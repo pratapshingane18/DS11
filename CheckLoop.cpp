@@ -396,10 +396,49 @@ void RemoveDuplicates(struct Node *p){
 
 }
 
-void RemoveDuplicatesFromUnsortedList(struct Node* p){
-    map<int,int> mp;
+/*
+Apporach is pretty straight forward-
+Take a map;
+initiate map with head val as 1;
+take two pointer prev and curr;
+initialize curr as head ka next and prev as head;
+now traverse till curr becomes NULL;
+while doing so if mp[curr->data] i.e. if value is already present in map then change node point prev->next to curr->next 
+and delete curr else create new element in map and initiate its value as 1 - mp[curr->data] = 1;
+and make prev= curr;
+continue traversing curr = curr->next;
+*/
 
-}
+
+    //Function to remove duplicates from unsorted linked list.
+    Node * removeDuplicates( Node *head) 
+    {
+     map<int,int> mp;
+     struct Node* curr = head;
+     mp[curr->data] =1;
+     struct Node* prev = curr;
+     curr = curr->next;
+     
+     while(curr){
+         if(mp[curr->data]){
+             prev->next = curr->next;
+             free(curr);
+         }
+         
+         else{
+             mp[curr->data] =1;
+             prev = curr;
+            
+         }
+         
+         curr = curr->next;
+         
+     }
+     
+     return head;
+
+    }
+
 
 /*Reversing a Linked List
     |- Reversing an Element
@@ -550,6 +589,41 @@ void Merge(struct Node *p, struct Node *q){
    }
 
 }
+
+//Move last element to front of a given Linked List
+
+/* We are using a double pointer head_ref here because we
+   change head of the linked list inside this function.*/
+void moveToFront(struct Node** head)
+{
+    /* If linked list is empty, or it contains only one
+      node, then nothing needs to be done, simply return */
+    if (*head == NULL || (*head)->next == NULL)
+        return;
+ 
+    /* Initialize second last and last pointers */
+    struct Node* secLast = NULL;
+    struct Node* last = *head;
+ 
+    /*After this loop secLast contains address of second
+    last node and last contains address of last node in
+    Linked List */
+    while (last->next != NULL) {
+        secLast = last;
+        last = last->next;
+    }
+ 
+    /* Set the next of second last as NULL */
+    secLast->next = NULL;
+ 
+    /* Set next of last as head node */
+    last->next = *head;
+ 
+    /* Change the head pointer to point to last node now */
+    *head = last;
+}
+
+
 
 /* Check Loop:
 
